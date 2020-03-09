@@ -2,11 +2,11 @@
 
 ## 1.1 5种帧类型
 
-![image-20200219163238108](can学习笔记.assets/image-20200219163238108.png)
+![image-20200219163238108](TyporaImage/Untitled.assets/image-20200219163238108.png)
 
 1. 数据帧
 
-   ![image-20200219195338989](can学习笔记.assets/image-20200219195338989.png)
+   ![image-20200219195338989](TyporaImage/Untitled.assets/image-20200219195338989.png)
 
    RTR：总是保证数据帧的优先级高于遥控帧
 
@@ -16,7 +16,7 @@
 
 2. 遥控帧：请求指定ID的节点发送数据
 
-   ![image-20200219195441941](can学习笔记.assets/image-20200219195441941.png)
+   ![image-20200219195441941](TyporaImage/Untitled.assets/image-20200219195441941.png)
 
 
 
@@ -27,7 +27,7 @@
 
 ​		发送一个bit所需要的时间
 
-![image-20200220173854358](can学习笔记.assets/image-20200220173854358.png)
+![image-20200220173854358](TyporaImage/Untitled.assets/image-20200220173854358.png)
 
 1. 同步段
 
