@@ -8,7 +8,6 @@ BSP中的SylixOS文件夹：
 
 - user文件夹：main.c 在系统启动后创建一个shell终端。
 
-  ![image-20191209164507479](../TyporaImage/image-20191209164507479.png)
 
 # 2 功能
 
@@ -422,4 +421,73 @@ bin文件比bspMap.h指定的大小**要小**？
   ```
 
   BUG：如果bspMap.h中.text段的剩余大小小于.data段的实际大小，那么在搬移的过程.data段覆盖掉尚未搬移的部分。
+  
+  ![image-20200331205953659](TyporaImage/BSP开发.assets/image-20200331205953659.png)
+
+## 6.3加载后的地址分布
+
+![1](TyporaImage/BSP开发.assets/image-20200331192609614.png)
+
+### 6.3.1静态映射
+
+静态映射过的只有 TEXT、DATA、BOOTSFR
+
+### 6.3.2动态映射
+
+![image-20200331200711927](TyporaImage/BSP开发.assets/image-20200331200711927.png)
+
+分配一个虚拟的地址，当对这个地址读写的时候会进行缺页异常处理分配真实的物理地址
+
+# 7 内核初始化
+
+## 7.1 从boot到系统入口
+
+boot镜像文件从盘符中搬移到TEXT段定义的地址
+
+文件：config
+
+```c
+#include "config.h"
+
+/*********************************************************************************************************
+    内存布局定义
+*********************************************************************************************************/
+
+MEMORY
+{
+  TEXT (rx) : ORIGIN = BSP_CFG_RAM_BASE, LENGTH = BSP_CFG_TEXT_SIZE
+  DATA (rw) : ORIGIN = BSP_CFG_RAM_BASE + (BSP_CFG_TEXT_SIZE), LENGTH = BSP_CFG_DATA_SIZE
+}
+
+BOOT_STACK_SIZE = BSP_CFG_BOOT_STACK_SIZE;
+```
+
+## 7.2 从汇编到C入口
+
+### 汇编部分
+
+- 连接脚本初步安排了代码执行的顺序。
+- 汇编向C传递参数，通过R0，R1，R2寄存器
+- ![image-20200331215758907](TyporaImage/BSP开发.assets/image-20200331215758907.png)
+
+### C部分
+
+```c
+    API_KernelStartParam("ncpus=1 kdlog=no kderror=yes kfpu=no heapchk=yes "
+                         "rfsmap=/boot:/yaffs2/n0,/:/yaffs2/n1");
+                                                                        /*  操作系统启动参数设置        */
+    API_KernelStart(usrStartup,
+                    (PVOID)&__heap_start,
+                    (size_t)&__heap_end - (size_t)&__heap_start,
+                    LW_NULL, 0);                                        /*  启动内核                    */
+
+```
+
+
+
+## 7.3 内核实现的初始化操作
+
+![image-20200331220838176](TyporaImage/BSP开发.assets/image-20200331220838176.png)
+
+## 7.4 BSP实现的初始化操作
 
