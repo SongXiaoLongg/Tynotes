@@ -491,3 +491,38 @@ BOOT_STACK_SIZE = BSP_CFG_BOOT_STACK_SIZE;
 
 ## 7.4 BSP实现的初始化操作
 
+![image-20200401080648489](TyporaImage/BSP开发.assets/image-20200401080648489.png)
+
+### 7.4.1分类
+
+![image-20200401202444602](TyporaImage/BSP开发.assets/image-20200401202444602.png)
+
+### 7.4.2  bspTicInit驱动
+
+Tic是系统调度依据的节拍。
+
+装载一个计数，每当当计数值递减到0的时候会产生一个中断，每次产生中断的间隔就是系统节拍的间隔。
+
+**寄存器你的配置**
+
+![image-20200401214424789](TyporaImage/BSP开发.assets/image-20200401214424789.png)
+
+![image-20200401214437507](TyporaImage/BSP开发.assets/image-20200401214437507.png)
+
+![image-20200401214447669](TyporaImage/BSP开发.assets/image-20200401214447669.png)
+
+
+
+**高精度定时器**
+
+![image-20200401213818268](TyporaImage/BSP开发.assets/image-20200401213818268.png)
+
+### 7.4.3 时钟原 PCLK
+
+![image-20200401211951046](TyporaImage/BSP开发.assets/image-20200401211951046.png)
+
+FCLK---->HCLK---->PCLK
+
+![image-20200401212258468](TyporaImage/BSP开发.assets/image-20200401212258468.png)
+
+![image-20200401214510730](TyporaImage/BSP开发.assets/image-20200401214510730.png)
