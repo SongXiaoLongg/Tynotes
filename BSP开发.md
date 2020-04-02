@@ -101,11 +101,13 @@ typedef struct lw_static_symbol {
 # 5 Makefile
 
 <<<<<<< HEAD
+
 - 从上往下看，注意注释，*.mk文件，现包含，最后在 mktemp文件中的end.mk下执行all。
 - base中与bsp关联的文件大部分在mktemp文件中
 
 # 6 内存管理
 =======
+
 # 6 镜像文件的地址空间分布
 >>>>>>> 8f1cc947e9cf4032ae9a53fac65b4a66474ea1cc
 
@@ -381,7 +383,7 @@ bin文件比bspMap.h指定的大小**要小**？
 
 答：紧凑排列
 
-- bsp在编译的时候按照链接脚本中规定的按照实际的大小安排位置输出到到bin文件中（	.text段的不好确定，在链接脚本中根据实际的地址决定)
+- bsp在编译的时候按照链接脚本中规定的按照实际的大小安排位置输出到到bin文件中（	.text段的大小不好确定，在链接脚本中根据实际的地址决定)
 
   文件：sylixOSBSP.ld
 
@@ -447,9 +449,11 @@ bin文件比bspMap.h指定的大小**要小**？
 
 # 7 内核初始化
 
+![image-20200402080721723](TyporaImage/BSP开发.assets/image-20200402080721723.png)
+
 ## 7.1 从boot到系统入口
 
-boot镜像文件从盘符中搬移到TEXT段定义的地址
+boot将镜像文件从盘符中搬移到TEXT段定义的地址
 
 文件：config
 
@@ -508,9 +512,9 @@ BOOT_STACK_SIZE = BSP_CFG_BOOT_STACK_SIZE;
 
 Tic是系统调度依据的节拍。
 
-装载一个计数，每当当计数值递减到0的时候会产生一个中断，每次产生中断的间隔就是系统节拍的间隔。
+装载一个计数，每当计数值递减到0的时候会产生一个中断，每次产生中断的间隔就是系统节拍的间隔。
 
-**寄存器你的配置**
+**寄存器的配置**s
 
 ![image-20200401214424789](TyporaImage/BSP开发.assets/image-20200401214424789.png)
 
@@ -538,9 +542,9 @@ FCLK---->HCLK---->PCLK
 
 ![image-20200402074555216](TyporaImage/BSP开发.assets/image-20200402074555216.png)
 
-# 8总结
 
-![image-20200402080721723](TyporaImage/BSP开发.assets/image-20200402080721723.png)
+
+
 
 # 8 中断
 
