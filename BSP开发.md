@@ -508,13 +508,23 @@ BOOT_STACK_SIZE = BSP_CFG_BOOT_STACK_SIZE;
 
 ![image-20200401202444602](TyporaImage/BSP开发.assets/image-20200401202444602.png)
 
-### 7.4.2  bspTicInit驱动
+### 7.4.2  bspTickInit驱动
 
 Tic是系统调度依据的节拍。
 
-装载一个计数，每当计数值递减到0的时候会产生一个中断，每次产生中断的间隔就是系统节拍的间隔。
+- 装载一个计数，每当计数值递减到0的时候会产生一个中断，每次产生中断的间隔就是系统节拍的间隔。
 
-**寄存器的配置**s
+- 计数值相当于把PCLK又做了一次分频。
+
+  - PCLK经过timer的分频器分频之后得到了timer的时钟频率，经过了count个timer的时钟频率得到了tick的时钟频率。
+  - timer的时钟频率 = PCLK / 定时器的分频因子
+  - tick = PCLK/(定时器的分频因子)/count
+
+  
+
+
+
+**寄存器的配置**
 
 ![image-20200401214424789](TyporaImage/BSP开发.assets/image-20200401214424789.png)
 
@@ -528,7 +538,7 @@ Tic是系统调度依据的节拍。
 
 ![image-20200401213818268](TyporaImage/BSP开发.assets/image-20200401213818268.png)
 
-### 7.4.3 时钟原 PCLK
+### 7.4.3 时钟源 PCLK
 
 ![image-20200401211951046](TyporaImage/BSP开发.assets/image-20200401211951046.png)
 
@@ -542,12 +552,9 @@ FCLK---->HCLK---->PCLK
 
 ![image-20200402074555216](TyporaImage/BSP开发.assets/image-20200402074555216.png)
 
-
-
-
-
 # 8 中断
 
 ![image-20200402081052968](TyporaImage/BSP开发.assets/image-20200402081052968.png)
 
 ![image-20200402081332666](TyporaImage/BSP开发.assets/image-20200402081332666.png)
+
