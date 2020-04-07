@@ -554,6 +554,33 @@ FCLK---->HCLK---->PCLK
 
 # 8 中断
 
+## 8.1 S3C2440 中断控制器
+
+1. 中断模式寄存器
+
+   1. FIQ
+   2. IRQ
+
+2. 中断源挂起寄存器和中断挂起寄存器
+
+   1. SRCPND：只要有中断请求，对应位置1.（可以有多个位）
+   2. INTPND：仲裁获胜的位置1，被屏蔽的位不会置1（同一时刻只能有1位）、
+
+   NOTE：在中断服务例程中必须要将相应的中断请求位清0
+
+3. 中断屏蔽寄存器
+
+   使能或禁止中断。
+
+4. 中断优先级寄存器
+
+   1. ARB_SELX：优先级选择
+   2. ARB_MODE：是否重载设置
+
+   ![image-20200407152444164](TyporaImage/BSP开发.assets/image-20200407152444164.png)
+
+   
+
 ![image-20200402081052968](TyporaImage/BSP开发.assets/image-20200402081052968.png)
 
 ![image-20200402081332666](TyporaImage/BSP开发.assets/image-20200402081332666.png)
@@ -569,5 +596,7 @@ FCLK---->HCLK---->PCLK
 ![image-20200406222359070](TyporaImage/BSP开发.assets/image-20200406222359070.png)
 
 ![image-20200406222403802](TyporaImage/BSP开发.assets/image-20200406222403802.png)
+
+# 9 自旋锁
 
 ![image-20200406222409041](TyporaImage/BSP开发.assets/image-20200406222409041.png)
