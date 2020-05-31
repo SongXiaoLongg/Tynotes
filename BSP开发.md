@@ -52,17 +52,43 @@ BSP中的SylixOS文件夹：
 
 # 4 符号表
 
+## 程序的连接
+
+[1]: https://www.jianshu.com/p/b7e44f749211	"程序的连接"
+
+程序的连接需要用到符号表
+
+**连接步骤**
+
+
+
+1. 符号解析
+
+   符号的定义：包括变量和函数
+
+   符号的引用：调用变量或者函数
+
+   解析：在符号的定义和引用之间建立联系
+
+2. 重定位
+
+   可执行文件：把多个文件的代码段和数据段合并成一个单独的代码段和数据段的文件
+
+   重定位：计算定义的符号在虚拟空间中的**绝对地址**，把在可执行文件中**符号引用**的地址修改为重新定位后的地址。
+
+   ![image-20200413105115912](TyporaImage/BSP开发.assets/image-20200413105115912.png)
+
 **在bsp中上，层应用如何调用到base静态库中（libsylixos）的函数 ？**
 
 答：  通过符号表 ：所谓符号表就是一些函数名或者全局变量。
 
-## 4.1 符号表导出脚本
+## 符号表导出脚本
 
 文件：baseMini2440\libsylixos\SylixOS\hosttools\makesymbol\makesybol.bat
 
 执行该脚本，生成symbol.c和symbol.h文件，在bsp中调用symbol.c和symbol.h中实现的函数生成符号表。4.1.1
 
-## 4.2 symbol.c
+## symbol.c
 
 **静态符号表**
 
@@ -106,14 +132,10 @@ typedef struct lw_static_symbol {
 - base中与bsp关联的文件大部分在mktemp文件中
 
 # 6 内存管理
-=======
 
-# 6 镜像文件的地址空间分布
->>>>>>> 8f1cc947e9cf4032ae9a53fac65b4a66474ea1cc
+推荐书籍：**深入理解计算机原理**
 
-![image-20200329113640486](TyporaImage/BSP开发.assets/image-20200329113640486.png)
-
-**深入理解计算机原理**
+**镜像文件的地址空间分布**
 
 ![image-20200330225908676](TyporaImage/BSP开发.assets/image-20200330225908676.png)
 
