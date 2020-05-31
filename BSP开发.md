@@ -599,4 +599,11 @@ FCLK---->HCLK---->PCLK
 
 # 9 自旋锁
 
-![image-20200406222409041](TyporaImage/BSP开发.assets/image-20200406222409041.png)
+ ![image-20200406222409041](TyporaImage/BSP开发.assets/image-20200406222409041.png)
+
+![image-20200410213006103](TyporaImage/BSP开发.assets/image-20200410213006103.png)
+
+绑核
+
+# 10 串口驱动
+
