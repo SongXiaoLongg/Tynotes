@@ -42,3 +42,25 @@ stm32f767汇编文件
 
 ## 2.5 kszn8851网卡
 
+# 3 接口
+
+## 3.1 添加命令接口
+
+MS_SHELL_CMD(cmd,   shell_process, "for what", __ms_shell_cmd);
+
+```c
+#include "ms_shell_cfg.h"
+#include "ms_shell.h"
+
+static void __ms_shell_ksz8851(int argc, char *argv[], const ms_shell_io_t *io)
+{
+   /*
+    * do something
+    */
+    
+    io->_printf("ier = %x, isr=%x\n", ier, isr);
+}
+
+MS_SHELL_CMD(ksz8851,   __ms_shell_ksz8851, "Show ksz8851 ier and isr", __ms_shell_cmd_ksz8851);
+```
+
