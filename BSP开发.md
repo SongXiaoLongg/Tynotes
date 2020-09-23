@@ -60,8 +60,6 @@ BSP中的SylixOS文件夹：
 
 **连接步骤**
 
-
-
 1. 符号解析
 
    符号的定义：包括变量和函数
@@ -621,7 +619,13 @@ FCLK---->HCLK---->PCLK
 
 # 9 自旋锁
 
- ![image-20200406222409041](TyporaImage/BSP开发.assets/image-20200406222409041.png)
+1. **适用于 临界资源即被线程访问又被中断访问的情况**
+
+
+
+![image-20200406222409041](TyporaImage/BSP开发.assets/image-20200406222409041.png)
+
+
 
 ![image-20200410213006103](TyporaImage/BSP开发.assets/image-20200410213006103.png)
 
